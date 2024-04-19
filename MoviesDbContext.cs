@@ -10,29 +10,26 @@ public class MoviesDbContext : DbContext
 {
     public DbSet<Movie> Movies { get; init; }
     
-    private MoviesDbContext(DbContextOptions options) : base(options)
-    {
-    }
-
     public static MoviesDbContext Create(IMongoDatabase database)
     {
         var options = new DbContextOptionsBuilder<MoviesDbContext>()
             .UseMongoDB(database.Client, database.DatabaseNamespace.DatabaseName)
+            #region Logging
             //.LogTo(Console.WriteLine)
-            .EnableSensitiveDataLogging()
+            // .EnableSensitiveDataLogging()
+            #endregion
             .Options;
         return new MoviesDbContext(options);
     }
     
+    private MoviesDbContext(DbContextOptions options) : base(options)
+    {
+    }
+
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {
         configurationBuilder.Conventions.Add(serviceProvider =>
             new CamelCaseElementNameConvention(serviceProvider
                 .GetRequiredService<ProviderConventionSetBuilderDependencies>()));
-    }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
     }
 }
