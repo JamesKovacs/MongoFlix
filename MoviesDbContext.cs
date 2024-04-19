@@ -9,7 +9,6 @@ namespace MongoFlix;
 public class MoviesDbContext : DbContext
 {
     public DbSet<Movie> Movies { get; init; }
-    public DbSet<Review> Reviews { get; init; }
     
     private MoviesDbContext(DbContextOptions options) : base(options)
     {
@@ -35,6 +34,5 @@ public class MoviesDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Review>().Property(x => x.MovieId).HasElementName("movie_id");
     }
 }
