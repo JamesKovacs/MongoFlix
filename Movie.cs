@@ -4,16 +4,16 @@ using MongoDB.EntityFrameworkCore;
 namespace MongoFlix;
 
 [Collection(Constants.MoviesCollectionName)]
-public class Movie(ObjectId id, string title, string? plot, int year, string? rated, IList<string> genres, bool? isTestData)
+public class Movie(string title, int year)
 {
-    public override string ToString() => $"{Title} ({Year}) [{string.Join(", ", Genres)}]{Environment.NewLine}\t{Awards?.Text}";
-
-    public ObjectId Id { get; init; } = id;
+    public ObjectId Id { get; set; }
     public string Title { get; set; } = title;
-    public string? Plot { get; set; } = plot;
     public int Year { get; set; } = year;
-    public string? Rated { get; set; } = rated;
-    public IList<string> Genres { get; set; } = genres;
+    public string? Plot { get; set; }
+    public string? Rated { get; set; }
+    public IList<string> Genres { get; set; } = new List<string>();
     public Awards? Awards { get; set; }
-    public bool? IsTestData { get; set; } = isTestData;
+    public bool? TheBookWasBetter { get; set; }
+    
+    public override string ToString() => $"{Title} ({Year}) [{string.Join(", ", Genres)}]{Environment.NewLine}\t{Awards?.Text}";
 }

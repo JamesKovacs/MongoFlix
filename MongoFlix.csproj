@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Faker.NET" Version="2.0.163" />
     <PackageReference Include="MongoDB.EntityFrameworkCore" Version="8.0.0" />
   </ItemGroup>
 
