@@ -6,7 +6,7 @@ namespace MongoFlix;
 [Collection(Constants.MoviesCollectionName)]
 public class Movie(string title, int year)
 {
-    public ObjectId Id { get; set; }
+    public ObjectId Id { get; private set; }
     public string Title { get; set; } = title;
     public int Year { get; set; } = year;
     public string? Plot { get; set; }
