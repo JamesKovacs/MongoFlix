@@ -2,11 +2,11 @@
 using MongoDB.Driver;
 using MongoFlix;
 
-var client = new MongoClient();
-var database = client.GetDatabase(Constants.MongoFlixDatabaseName);
+// var client = new MongoClient();
+// var database = client.GetDatabase(Constants.MongoFlixDatabaseName);
+// using var db = MoviesDbContext.Create(database);
 
 #region Demos
-// using var db = MoviesDbContext.Create(database);
 // var moviesQuery = db.Movies
 //     .Where(m => m.Genres.Contains("Comedy")
 //                 && m.Title.StartsWith("A"))

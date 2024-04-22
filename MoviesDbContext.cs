@@ -8,12 +8,12 @@ namespace MongoFlix;
 
 public class MoviesDbContext : DbContext
 {
-    public DbSet<Movie> Movies { get; init; }
+    // public DbSet<Movie> Movies { get; init; }
     
     public static MoviesDbContext Create(IMongoDatabase database)
     {
         var options = new DbContextOptionsBuilder<MoviesDbContext>()
-            .UseMongoDB(database.Client, database.DatabaseNamespace.DatabaseName)
+            // .UseMongoDB(database.Client, database.DatabaseNamespace.DatabaseName)
             #region Logging
             //.LogTo(Console.WriteLine)
             // .EnableSensitiveDataLogging()
@@ -26,10 +26,10 @@ public class MoviesDbContext : DbContext
     {
     }
 
-    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
-    {
-        configurationBuilder.Conventions.Add(serviceProvider =>
-            new CamelCaseElementNameConvention(serviceProvider
-                .GetRequiredService<ProviderConventionSetBuilderDependencies>()));
-    }
+    // protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+    // {
+        // configurationBuilder.Conventions.Add(serviceProvider =>
+            // new CamelCaseElementNameConvention(serviceProvider
+                // .GetRequiredService<ProviderConventionSetBuilderDependencies>()));
+    // }
 }
